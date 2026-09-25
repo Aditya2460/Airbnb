@@ -1,3 +1,5 @@
+// configuring .env file
+require("dotenv").config();
 // Core Module
 const path = require("path");
 
@@ -9,7 +11,7 @@ const storeRouter = require("./routes/storeRouter");
 const hostRouter = require("./routes/hostRouter");
 const rootDir = require("./utils/pathUtil");
 const errorsController = require("./controllers/errors");
-const {mongoConnect} = require("./utils/database");
+const { mongoConnect } = require("./utils/database");
 const app = express();
 
 app.set("view engine", "ejs");
@@ -26,9 +28,9 @@ app.use(errorsController.pageNotFound);
 const PORT = 3001;
 console.log("in app.js file");
 
-mongoConnect(()=>{
+mongoConnect(() => {
   console.log("in app.js file");
-  app.listen( PORT,() => {
+  app.listen(PORT, () => {
     console.log(`Server running on address http://localhost:${PORT}`);
   });
 });
